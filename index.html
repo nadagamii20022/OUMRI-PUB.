@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مطبعة عومري</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Cairo',sans-serif;
+overflow-x:hidden;
+color:#fff;
+
+background:linear-gradient(-45deg,#0f172a,#1e3a8a,#0f766e,#312e81,#0891b2);
+background-size:400% 400%;
+animation:gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.blob{
+position:fixed;
+border-radius:50%;
+filter:blur(90px);
+opacity:.55;
+z-index:-1;
+animation:float 14s ease-in-out infinite;
+}
+
+.blob1{
+width:300px;
+height:300px;
+background:#00d4ff;
+top:-100px;
+left:-100px;
+}
+
+.blob2{
+width:280px;
+height:280px;
+background:#7c3aed;
+right:-80px;
+top:35%;
+animation-delay:4s;
+}
+
+.blob3{
+width:250px;
+height:250px;
+background:#22c55e;
+bottom:-80px;
+left:35%;
+animation-delay:8s;
+}
+
+@keyframes float{
+0%,100%{transform:translate(0,0);}
+50%{transform:translate(30px,-40px);}
+}
+
+.hero{
+width:100%;
+height:40vh;
+position:relative;
+overflow:hidden;
+}
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+transform-origin:center top;
+will-change:transform;
+transition:transform .05s linear;
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to bottom,rgba(0,0,0,.25),rgba(0,0,0,.55));
+}
+
+.logo{
+width:130px;
+height:130px;
+margin:-65px auto 20px;
+border-radius:50%;
+overflow:hidden;
+border:5px solid rgba(255,255,255,.75);
+box-shadow:0 15px 35px rgba(0,0,0,.4);
+animation:pulse 3s infinite;
+position:relative;
+z-index:2;
+}
+
+.logo img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
+}
+
+h1{
+text-align:center;
+font-size:34px;
+margin-bottom:8px;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+opacity:.9;
+margin-bottom:35px;
+}
+
+.container{
+width:92%;
+max-width:560px;
+margin:auto;
+padding-bottom:40px;
+}
+
+.card{
+padding:18px;
+margin-bottom:18px;
+border-radius:22px;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.18);
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-6px) scale(1.02);
+background:rgba(255,255,255,.18);
+}
+
+.card-header{
+display:flex;
+align-items:center;
+gap:14px;
+margin-bottom:14px;
+}
+
+.card-header .icon{
+width:50px;
+height:50px;
+border-radius:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+background:linear-gradient(135deg,#38bdf8,#2563eb);
+flex-shrink:0;
+}
+
+.card-header .title{
+font-weight:bold;
+font-size:19px;
+}
+
+.row-list{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.row-item{
+display:flex;
+align-items:center;
+gap:14px;
+padding:12px 14px;
+border-radius:16px;
+background:rgba(255,255,255,.08);
+transition:.25s;
+}
+
+.row-item:hover{
+background:rgba(255,255,255,.16);
+transform:translateX(-4px);
+}
+
+.row-item .icon{
+width:42px;
+height:42px;
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:16px;
+background:linear-gradient(135deg,#38bdf8,#2563eb);
+flex-shrink:0;
+}
+
+.row-item .row-info{
+flex:1;
+}
+
+.row-item .row-label{
+font-size:14px;
+opacity:.8;
+margin-bottom:2px;
+}
+
+.row-item .row-value{
+font-weight:600;
+font-size:16px;
+word-break:break-word;
+}
+
+a{
+text-decoration:none;
+color:white;
+}
+
+.action-btn{
+display:block;
+text-align:center;
+padding:18px;
+margin-top:18px;
+border-radius:18px;
+font-size:19px;
+font-weight:bold;
+transition:.3s;
+}
+
+.action-btn:hover{
+transform:scale(1.03);
+}
+
+.map{
+background:linear-gradient(135deg,#0ea5e9,#2563eb);
+}
+
+.facebook{
+background:linear-gradient(135deg,#1877f2,#0d47a1);
+}
+
+.whatsapp{
+background:linear-gradient(135deg,#25D366,#128C7E);
+}
+
+footer{
+padding:35px;
+text-align:center;
+opacity:.8;
+}
+
+.hero,
+.logo,
+h1,
+.subtitle,
+.card,
+.action-btn{
+opacity:0;
+transform:translateY(25px);
+animation:show .8s forwards;
+}
+
+.logo{animation-delay:.2s;}
+h1{animation-delay:.4s;}
+.subtitle{animation-delay:.6s;}
+
+@keyframes show{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* ===== Splash Screen ===== */
+
+body.splash-active{
+overflow:hidden;
+height:100vh;
+}
+
+#splashScreen{
+position:fixed;
+inset:0;
+width:100vw;
+height:100vh;
+z-index:99999;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+background:#0b0b0b;
+overflow:hidden;
+transition:opacity .8s ease;
+}
+
+#splashScreen.splash-hide{
+opacity:0;
+pointer-events:none;
+}
+
+.splash-glow{
+position:absolute;
+width:600px;
+height:600px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(56,189,248,.25) 0%,rgba(56,189,248,0) 70%);
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+animation:splashGlowPulse 4s ease-in-out infinite;
+}
+
+@keyframes splashGlowPulse{
+0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1);}
+50%{opacity:1;transform:translate(-50%,-50%) scale(1.15);}
+}
+
+.splash-logo-wrap{
+width:140px;
+height:140px;
+border-radius:50%;
+overflow:hidden;
+border:3px solid rgba(255,255,255,.25);
+box-shadow:0 0 40px rgba(56,189,248,.45),0 15px 35px rgba(0,0,0,.5);
+position:relative;
+z-index:2;
+opacity:0;
+transform:scale(.6);
+animation:splashLogoIn 1s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.splash-logo-wrap img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+@keyframes splashLogoIn{
+0%{opacity:0;transform:scale(.6);}
+100%{opacity:1;transform:scale(1);}
+}
+
+.splash-text-wrap{
+position:relative;
+z-index:2;
+margin-top:26px;
+text-align:center;
+padding:0 20px;
+}
+
+#splashTitle{
+font-size:22px;
+font-weight:700;
+color:#fff;
+white-space:nowrap;
+overflow:hidden;
+border-left:2px solid rgba(255,255,255,.6);
+display:inline-block;
+}
+
+.splash-subtitle{
+margin-top:12px;
+font-size:15px;
+letter-spacing:.5px;
+color:rgba(255,255,255,.75);
+opacity:0;
+animation:splashFadeIn .8s ease forwards;
+animation-delay:2.1s;
+}
+
+@keyframes splashFadeIn{
+to{opacity:1;}
+}
+
+.splash-loader{
+position:relative;
+z-index:2;
+width:160px;
+height:3px;
+margin-top:26px;
+background:rgba(255,255,255,.12);
+border-radius:10px;
+overflow:hidden;
+}
+
+.splash-loader-bar{
+position:absolute;
+top:0;
+right:0;
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#38bdf8,#2563eb);
+border-radius:10px;
+box-shadow:0 0 12px rgba(56,189,248,.7);
+animation:splashLoad 2s ease forwards;
+animation-delay:.3s;
+}
+
+@keyframes splashLoad{
+0%{width:0%;}
+100%{width:100%;}
+}
+
+</style>
+
+</head>
+
+<body class="splash-active">
+
+<div id="splashScreen">
+<div class="splash-glow"></div>
+<div class="splash-logo-wrap">
+<img src="https://i.postimg.cc/MKpV0bLS/image.png" alt="شعار مطبعة عومري">
+</div>
+<div class="splash-text-wrap">
+<span id="splashTitle"></span>
+<div class="splash-subtitle">الطباعة • الديكور • CNC</div>
+</div>
+<div class="splash-loader">
+<div class="splash-loader-bar"></div>
+</div>
+</div>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<div class="hero">
+<img id="heroImg" src="https://i.postimg.cc/zv36KRZp/image.png">
+<div class="overlay"></div>
+</div>
+
+<div class="logo">
+<img src="https://i.postimg.cc/MKpV0bLS/image.png">
+</div>
+
+<h1>مطبعة عومري</h1>
+
+<div class="subtitle">
+الطباعة • الديكور • CNC • الجودة والإتقان
+</div>
+
+<div class="container">
+
+<div class="card">
+<div class="card-header">
+<div class="icon"><i class="fa-solid fa-phone"></i></div>
+<div class="title">أرقام الهاتف</div>
+</div>
+<div class="row-list">
+
+<a href="tel:0660417188">
+<div class="row-item">
+<div class="icon"><i class="fa-solid fa-user-tie"></i></div>
+<div class="row-info">
+<div class="row-label">المسير</div>
+<div class="row-value">0660 41 71 88</div>
+</div>
+</div>
+</a>
+
+<a href="tel:0660417143">
+<div class="row-item">
+<div class="icon"><i class="fa-solid fa-building"></i></div>
+<div class="row-info">
+<div class="row-label">المكتب</div>
+<div class="row-value">0660 41 71 43</div>
+</div>
+</div>
+</a>
+
+<a href="tel:0660417123">
+<div class="row-item">
+<div class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+<div class="row-info">
+<div class="row-label">الورشة</div>
+<div class="row-value">0660 41 71 23</div>
+</div>
+</div>
+</a>
+
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="icon"><i class="fa-solid fa-at"></i></div>
+<div class="title">البريد الإلكتروني</div>
+</div>
+<div class="row-list">
+
+<a href="mailto:studio.oumri@gmail.com">
+<div class="row-item">
+<div class="icon"><i class="fa-solid fa-envelope"></i></div>
+<div class="row-info">
+<div class="row-label">البريد الأول</div>
+<div class="row-value">studio.oumri@gmail.com</div>
+</div>
+</div>
+</a>
+
+<a href="mailto:oumricnc@gmail.com">
+<div class="row-item">
+<div class="icon"><i class="fa-solid fa-envelope-open"></i></div>
+<div class="row-info">
+<div class="row-label">البريد الثاني</div>
+<div class="row-value">oumricnc@gmail.com</div>
+</div>
+</div>
+</a>
+
+</div>
+</div>
+
+<a href="https://wa.me/213660417188" class="action-btn whatsapp" target="_blank">
+<i class="fab fa-whatsapp"></i>
+واتساب المسير
+</a>
+
+<a href="https://wa.me/213660417143" class="action-btn whatsapp" target="_blank">
+<i class="fab fa-whatsapp"></i>
+واتساب المكتب
+</a>
+
+<a href="https://web.facebook.com/dicorationforex.adrar/?_rdc=1&_rdr#" class="action-btn facebook" target="_blank">
+<i class="fab fa-facebook-f"></i>
+صفحة الفيسبوك
+</a>
+
+<a href="https://www.google.com/maps/dir/%D9%85%D8%B7%D8%A8%D8%B9%D8%A9+%D8%B9%D9%88%D9%85%D8%B1%D9%8A%D8%8C+VPG8%2BJPV%D8%8C+%D8%A3%D8%AF%D8%B1%D8%A7%D8%B1%E2%80%8E%E2%80%AD/%D9%85%D8%B7%D8%A8%D8%B9%D8%A9+%D8%B9%D9%88%D9%85%D8%B1%D9%8A%D8%8C+VPG8%2BJPV%D8%8C+%D8%A3%D8%AF%D8%B1%D8%A7%D8%B1%E2%80%8E%E2%80%AD/@30.8488088,3.2478967,6.42z/data=!4m13!4m12!1m5!1m1!1s0xdf59f44f95960b7:0x331511687bea2781!2m2!1d-0.2832353!2d27.8764553!1m5!1m1!1s0xdf59f44f95960b7:0x331511687bea2781!2m2!1d-0.2832353!2d27.8764553!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDcyNi4wIKXMDSoASAFQAw%3D%3D"
+class="action-btn map"
+target="_blank">
+
+<i class="fa-solid fa-location-dot"></i>
+فتح الموقع على Google Maps
+
+</a>
+
+</div>
+
+<footer>
+
+✨ شكراً لزيارتكم، نتطلع لخدمتكم دائماً ✨
+
+</footer>
+
+<script>
+// تأثير تكبير الصورة عند سحب الصفحة للأسفل (Pull / Rubber-band effect)
+(function(){
+var img = document.getElementById('heroImg');
+var lastY = window.scrollY;
+
+function applyEffect(){
+var y = window.scrollY;
+if(y < 0){
+// عند السحب للأسفل والصفحة في الأعلى (iOS Safari rubber-band)
+var scale = 1 + Math.min(Math.abs(y) / 200, 1) * 0.5;
+img.style.transform = 'scale(' + scale + ')';
+} else {
+img.style.transform = 'scale(1)';
+}
+}
+
+window.addEventListener('scroll', applyEffect, {passive:true});
+
+// دعم إضافي للمس على الأجهزة التي لا تدعم rubber-band الافتراضي
+var startY = 0;
+var pulling = false;
+
+document.addEventListener('touchstart', function(e){
+if(window.scrollY <= 0){
+startY = e.touches[0].clientY;
+pulling = true;
+}
+}, {passive:true});
+
+document.addEventListener('touchmove', function(e){
+if(!pulling) return;
+var currentY = e.touches[0].clientY;
+var diff = currentY - startY;
+if(diff > 0 && window.scrollY <= 0){
+var scale = 1 + Math.min(diff / 200, 1) * 0.5;
+img.style.transform = 'scale(' + scale + ')';
+} else {
+pulling = false;
+}
+}, {passive:true});
+
+document.addEventListener('touchend', function(){
+pulling = false;
+img.style.transform = 'scale(1)';
+}, {passive:true});
+})();
+</script>
+
+<script>
+// ===== Splash Screen Logic =====
+(function(){
+var splash = document.getElementById('splashScreen');
+var titleEl = document.getElementById('splashTitle');
+var fullText = 'مرحبًا بكم في مطبعة عومري';
+var i = 0;
+var typeSpeed = 55; // سرعة الكتابة لكل حرف (ms)
+
+function typeWriter(){
+if(i < fullText.length){
+titleEl.textContent += fullText.charAt(i);
+i++;
+setTimeout(typeWriter, typeSpeed);
+} else {
+titleEl.style.borderLeft = 'none';
+}
+}
+
+// بدء الكتابة بعد ظهور الشعار (بعد 1 ثانية تقريبًا)
+setTimeout(typeWriter, 900);
+
+// إخفاء الشاشة بعد المدة المحددة (2.5 - 3 ثوانٍ)
+setTimeout(function(){
+splash.classList.add('splash-hide');
+document.body.classList.remove('splash-active');
+}, 3000);
+
+// إزالة الشاشة نهائيًا من الصفحة بعد انتهاء تأثير الاختفاء
+setTimeout(function(){
+if(splash && splash.parentNode){
+splash.parentNode.removeChild(splash);
+}
+}, 3800);
+})();
+</script>
+
+</body>
+</html>
